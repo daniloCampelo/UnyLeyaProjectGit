@@ -11,24 +11,27 @@ class M_Editoras extends CI_Model {
 	}
 
 	/*
-		Insere uma editora no banco de dados
+		Atualiza uma editora no banco de dados
 	*/
-	public function insert_editora(){
-		
+	public function update_editora($id_editora,$array){
+		$this->db->where('id_editora',$id_editora); // Especifica o dado a ser atualizado
+        $this->db->update('editoras',$array); 	// Efetua a atualizacao
 	}
 
 	/*
 		Cria uma editora no banco de dados	
 	*/
-	public function create_editora(){
-		
+	public function create_editora($array){
+		$this->db->insert('editoras',$array);
+		$this->db->insert_id();
 	}
 
 	/*
 		Deleta uma editora no banco de dados
 	*/
-	public function delete_editora(){
-		
+	public function delete_editora($id_editora){
+		$query = "UPDATE `editoras` SET `ativo`= 0	 WHERE `id_editora` = $id_editora"; // Especificação do comando
+		$this->db->query($query); // Execução do comando
 	}
 
 	/*

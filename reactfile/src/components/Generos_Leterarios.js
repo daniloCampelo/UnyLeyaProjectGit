@@ -14,6 +14,44 @@ class Generos_Literarios extends React.Component{
 
     // Controe funcoes
     this.createGeneroLeterario = this.createGeneroLeterario.bind(this);
+    this.editGenero = this.editGenero.bind(this);
+    this.deleteGenero = this.deleteGenero.bind(this);
+  }
+
+  /*
+     Edita um genero literário
+  */
+  editGenero(genero) {
+    this.props.history.push('/edit/EditGenero', {detail: genero}) // Redirecionamento
+  }
+  /*
+    Exclui um genero literario
+  */
+  deleteGenero(id_genero_literario) {
+   // Configura as variasveis
+   const apiUrl = 'http://localhost/UnyLeyaProjectGit/index.php/C_Generos/DeleteGenerosLiterarios'; // URL para renderizar a função para o Controller.
+    
+   const myHeaders = new Headers();
+   myHeaders.append('Content-Type', 'application/json');
+   
+   // Define o identificador que será deletado.
+   let data = {
+    id_genero_literario: id_genero_literario
+   }
+
+   // Configura o método POST
+   const options = {
+     method: 'POST',
+     body: JSON.stringify(data),
+     myHeaders
+   }; 
+   
+   // Executa o redirecionamento do link para o Controler
+   fetch(apiUrl, options)
+     .then(res => res.json()) 
+
+   // Atualiza a página após deletar o ítem
+   window.location.reload(true); 
   }
 
   /*
@@ -28,7 +66,7 @@ class Generos_Literarios extends React.Component{
     Caso não haja resultados, o estado do erro é setado como verdadeiro.
   */
   componentDidMount() { 
-    const apiUrl = 'http://localhost/UnyLeyaProject/index.php/C_Generos/GetGenerosLiterarios';
+    const apiUrl = 'http://localhost/UnyLeyaProjectGit/index.php/C_Generos/GetGenerosLiterarios';
 
     fetch(apiUrl) // Carrega de forma assincrona o conteúdo da URL
       .then(res => res.json()) // Rotorna os dados requeridos da forma .json()
@@ -70,9 +108,9 @@ class Generos_Literarios extends React.Component{
                 <td>{generos_literarios.ativo}</td>
 
                 <td>
-                  <Button onClick={()=>this.editAluno(generos_literarios)}>Edit</Button>
+                  <Button onClick={()=>this.editGenero(generos_literarios)}>Edit</Button>
                   &nbsp;
-                  <Button onClick={()=>this.deleteAluno(generos_literarios.id_genero_literario)}> Delete</Button>
+                  <Button onClick={()=>this.deleteGenero(generos_literarios.id_genero_literario)}> Delete</Button>
                 </td>
               </tr>
             ))}

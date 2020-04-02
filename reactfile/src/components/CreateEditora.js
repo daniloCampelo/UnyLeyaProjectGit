@@ -10,7 +10,6 @@ class CreateEditora extends React.Component{
     super(props);
     this.state = {
       nome: '', 
-      
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -31,7 +30,8 @@ class CreateEditora extends React.Component{
   */
   handleSubmit() {
     // Configura o link a redirecionar
-    let apiUrl = 'localhost/UnyLeyaProject/index.php/C_Editoras/InsertEditora';
+    let apiUrl = 'http://localhost/UnyLeyaProjectGit/index.php/C_Editoras/InsertEditora';
+    
     
     // Seta as variáveis para a submissão
     let data = {

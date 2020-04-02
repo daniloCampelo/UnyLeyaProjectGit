@@ -13,6 +13,46 @@ class Editoras extends React.Component{
     
     // Constroe as funções utilizadas
     this.createEditora = this.createEditora.bind(this);
+    this.editEditora = this.editEditora.bind(this);
+    this.deleteEditora = this.deleteEditora.bind(this);
+  }
+
+
+  /*
+    Redireciona para edição
+  */
+  editEditora(editora) {
+    this.props.history.push('/edit/EditEditora', {detail: editora}) // Redirecionamento
+  }
+
+  /*
+    Exclui
+  */
+  deleteEditora(id_editora) {
+    // Configura as variasveis
+    const apiUrl = 'http://localhost/UnyLeyaProjectGit/index.php/C_Editoras/DeleteEditora'; // URL para renderizar a função para o Controller.
+    
+    const myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+    
+    // Define o identificador que será deletado.
+    let data = {
+      id_editora: id_editora
+    }
+
+    // Configura o método POST
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(data),
+      myHeaders
+    }; 
+    
+    // Executa o redirecionamento do link para o Controler
+    fetch(apiUrl, options)
+      .then(res => res.json()) 
+
+    // Atualiza a página após deletar o ítem
+    window.location.reload(true); 
   }
 
   
@@ -70,9 +110,9 @@ class Editoras extends React.Component{
                   <td>{editoras.ativo}</td>
 
                   <td>
-                    <Button onClick={()=>this.editAluno(editoras)}>Edit</Button>
+                    <Button onClick={()=>this.editEditora(editoras)}>Edit</Button>
                     &nbsp;
-                    <Button onClick={()=>this.deleteAluno(editoras.id_editora)}> Delete</Button>
+                    <Button onClick={()=>this.deleteEditora(editoras.id_editora)}> Delete</Button>
                   </td>
                 </tr>
               ))}

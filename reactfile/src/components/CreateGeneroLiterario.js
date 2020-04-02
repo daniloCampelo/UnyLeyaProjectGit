@@ -31,7 +31,7 @@ class CreateGeneroLiterario extends React.Component{
   */
   handleSubmit() {
     // Configura o link a redirecionar
-    let apiUrl = 'localhost/UnyLeyaProject/index.php/C_Generos/InsertGeneroLiterario';
+    let apiUrl = 'http://localhost/UnyLeyaProjectGit/index.php/C_Generos/InsertGeneroLiterario';
     
     // Seta as variáveis para a submissão
     let data = {

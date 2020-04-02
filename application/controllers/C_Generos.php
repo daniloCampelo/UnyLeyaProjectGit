@@ -39,26 +39,53 @@ class C_Generos extends CI_Controller {
 	}
 
 	/*
-		Insere um livro
+		Insere um Genero
 	*/
 	public function InsertGeneroLiterario()
 	{
-		// Code
+		// Configura a variável que receberá dados do usuário
+		$formdata = json_decode(file_get_contents('php://input'), true);
+
+		// Obtendo os dados do usuário
+		$array = array(
+			"nome" => $formdata['nome'],
+			"ativo" => 1
+		);
+
+		// Chama a funcao do Model para inserir os dados no Banco de Dados.
+		$this->M_Generos->create_genero($array);
 	}
 
 	/*
-		Atualiza um livro
+		Atualiza um Genero
 	*/
 	public function UpDateGenerosLeterarios()
 	{
-		// Code
+		// Configura a variável que receberá dados do usuário
+		$formdata = json_decode(file_get_contents('php://input'), true);
+
+		// Obtendo os dados do usuário
+		$id_genero_literario = $formdata['id_genero_literario'];
+		$array = array(
+			"nome" => $formdata['nome'],
+		);
+
+		// Chama a funcao do Model para inserir os dados no Banco de Dados.
+		$this->M_Generos->update_genero($id_genero_literario,$array);
 	}
 
 	/*
-		Deleta um livro
+		Deleta um Genero
 	*/
 	public function DeleteGenerosLiterarios()
 	{
-		// Code
+				// Configura a variável que receberá dados do usuário
+		$formdata = json_decode(file_get_contents('php://input'), true);
+
+		// Obtendo os dados do usuário, vindos do react 
+		$id_genero_literario = $formdata['id_genero_literario'];
+
+		// Chama a funcao do Model para deletar
+		$this->M_Generos->delete_genero($id_genero_literario);
 	}
 }

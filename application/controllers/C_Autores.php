@@ -43,7 +43,20 @@ class C_Autores extends CI_Controller {
 	*/
 	public function InsertAutor()
 	{
-		// Code
+		// Configura a variável que receberá dados do usuário
+		$formdata = json_decode(file_get_contents('php://input'), true);
+
+		// Obtendo os dados do usuário
+		$array = array(
+			"nome" => $formdata['nome'],
+			"sexo" => $formdata['sexo'],
+			"data_de_nascimento" => $formdata['data_de_nascimento'],
+			"nacionalidade" => $formdata['nacionalidade'],
+			"ativo" => 1
+		);
+
+		// Chama a funcao do Model para inserir os dados no Banco de Dados.
+		$this->M_Autores->create_autor($array);
 	}
 
 	/*
@@ -51,7 +64,20 @@ class C_Autores extends CI_Controller {
 	*/
 	public function UpDateAutor()
 	{
-		// Code
+		// Configura a variável que receberá dados do usuário
+		$formdata = json_decode(file_get_contents('php://input'), true);
+
+		// Obtendo os dados do usuário
+		$id_autor = $formdata['id_autor'];
+		$array = array(
+			"nome" => $formdata['nome'],
+			"sexo" => $formdata['sexo'],
+			"data_de_nascimento" => $formdata['data_de_nascimento'],
+			"nacionalidade" => $formdata['nacionalidade'],
+		);
+
+		// Chama a funcao do Model para inserir os dados no Banco de Dados.
+		$this->M_Autores->update_autor($id_autor,$array);
 	}
 
 	/*
@@ -59,6 +85,13 @@ class C_Autores extends CI_Controller {
 	*/
 	public function DeleteAutor()
 	{
-		// Code
+		// Configura a variável que receberá dados do usuário
+		$formdata = json_decode(file_get_contents('php://input'), true);
+
+		// Obtendo os dados do usuário, vindos do react 
+		$id_autor = $formdata['id_autor'];
+
+		// Chama a funcao do Model para deletar
+		$res = $this->M_Autores->delete_autor($id_autor);
 	}
 }

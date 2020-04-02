@@ -12,24 +12,27 @@ class M_Autores extends CI_Model {
 
 
 	/*
-		Insere um autor no banco de dados
+		Atualiza um autor no banco de dados
 	*/
-	public function insert_autor(){
-		
+	public function update_autor($id_autor,$array){
+		$this->db->where('id_autor',$id_autor); // Especifica o dado a ser atualizado
+        $this->db->update('autores',$array); 	// Efetua a atualizacao
 	}
 
 	/*
 		Cria um autor no banco de dados	
 	*/
-	public function create_autor(){
-		
+	public function create_autor($array){
+		$this->db->insert('autores',$array);
+		$this->db->insert_id();
 	}
 
 	/*
 		Deleta um autor no banco de dados
 	*/
-	public function delete_autor(){
-		
+	public function delete_autor($id_autor){
+		$query = "UPDATE `autores` SET `ativo`= 0	 WHERE `id_autor` = $id_autor"; // Especificação do comando
+		$this->db->query($query); // Execução do comando
 	}
 
 	/*

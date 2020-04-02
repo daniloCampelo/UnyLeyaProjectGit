@@ -47,20 +47,17 @@ ReactDOM.render(
         <Route path="/CreateEditora" component={CreateEditora}/>
         <Route path="/CreateGeneroLiterario" component={CreateGeneroLiterario}/>
 
-        <Route path="/EditLivro" component={EditLivro}/>
-        <Route path="/DeleteLivro" component={DeleteLivro}/>
+        <Route path="/edit/EditLivro" component={EditLivro}/>
+        <Route path="/delete/DeleteLivro" component={DeleteLivro}/>
 
-        <Route path="/EditAutor" component={EditAutor}/>
-        <Route path="/DeleteAutor" component={DeleteAutor}/>
+        <Route path="/edit/EditAutor" component={EditAutor}/>
+        <Route path="/delete/DeleteAutor" component={DeleteAutor}/>
 
-        <Route path="/EditEditora" component={EditEditora}/>
-        <Route path="/DeleteEditora" component={DeleteEditora}/>
+        <Route path="/edit/EditEditora" component={EditEditora}/>
+        <Route path="/delete/DeleteEditora" component={DeleteEditora}/>
 
-        <Route path="/EditLivro" component={EditLivro}/>
-        <Route path="/DeleteLivro" component={DeleteLivro}/>
-
-        <Route path="/EditGenero" component={EditGenero}/>
-        <Route path="/DeleteGenero" component={DeleteGenero}/>
+        <Route path="/edit/EditGenero" component={EditGenero}/>
+        <Route path="/delete/DeleteGenero" component={DeleteGenero}/>
 
 
       </Menu>

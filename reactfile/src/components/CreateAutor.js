@@ -34,7 +34,7 @@ class CreateAutor extends React.Component{
   */
   handleSubmit() {
     // Configura o link a redirecionar
-    let apiUrl = 'localhost/UnyLeyaProject/index.php/C_Autores/InsertAutor';
+    let apiUrl = 'http://localhost/UnyLeyaProjectGit/index.php/C_Autores/InsertAutor';
     
     // Seta as variáveis para a submissão
     let data = {

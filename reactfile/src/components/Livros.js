@@ -99,6 +99,7 @@ class Livros extends React.Component{
               <tr>
                 <th>ID</th>
                 <th>Nome</th>
+                <th>Ano de Lançamento</th>
                 <th>Ativo</th>
                 <th>Id_Autor</th>
                 <th>Id_Editora</th>
@@ -115,6 +116,7 @@ class Livros extends React.Component{
 
                   <td>{livros.id_livro}</td>
                   <td>{livros.nome}</td>
+                  <td>{livros.ano_de_lancamento}</td>
                   <td>{livros.ativo}</td>
                   <td>{livros.id_autor}</td>
                   <td>{livros.id_editora}</td>

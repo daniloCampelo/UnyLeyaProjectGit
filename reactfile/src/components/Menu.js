@@ -11,7 +11,7 @@ class Menu extends React.Component{
   render(){
     const menuitems = [
       {
-         label:'Home',
+         label:'Inicio',
          icon:'pi pi-check',
          command:() => this.props.history.push('/Home'),
       },
