@@ -1,0 +1,36 @@
+CREATE TABLE AUTORES(
+	id_autor INT NOT NULL AUTO_INCREMENT,
+    nome varchar(255),
+    sexo varchar(255),
+    nacionalidade varchar(255),
+    ativo BINARY,
+    PRIMARY KEY (id_autor) 
+);
+
+CREATE TABLE EDITORAS(
+	id_editora INT NOT NULL AUTO_INCREMENT,
+    nome varchar(255),
+    ativo BINARY,
+    PRIMARY KEY (id_editora)
+);
+
+CREATE TABLE GENEROS_LETERARIOS(
+	id_genero_literario INT NOT NULL AUTO_INCREMENT,
+    nome varchar(255),
+    ativo BINARY,
+    PRIMARY KEY (id_genero_literario)
+);
+
+CREATE TABLE LIVROS(
+	id_livro INT NOT NULL AUTO_INCREMENT,
+    nome varchar(255),
+    ativo BINARY,
+    id_autor INT,
+    id_editora INT,
+    id_genero_literario INT,
+    PRIMARY KEY (id_livro),
+    FOREIGN KEY (id_autor) REFERENCES AUTORES(id_autor),
+    FOREIGN KEY (id_editora) REFERENCES EDITORAS(id_editora),
+    FOREIGN KEY (id_genero_literario) REFERENCES GENEROS_LETERARIOS(id_genero_literario)
+    
+);
