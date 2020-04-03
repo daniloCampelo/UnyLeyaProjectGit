@@ -35,8 +35,6 @@ class C_Livros extends CI_Controller {
 		// Carrega os livros da base de dados
 		$livros = $this->M_Livros->retrieve_livro();
 
-		// $livros[0]->id_livro; //Acesso o id do primeiro livro
-
 		foreach ($livros as $linha) {
 			$linha->teste = "testando a atribuicao de valores";
 			$linha->autor = $this->M_Autores->get_autor($linha->id_autor);// Getting in BD
