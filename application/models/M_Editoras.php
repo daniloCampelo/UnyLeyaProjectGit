@@ -44,4 +44,15 @@ class M_Editoras extends CI_Model {
 		// Retora os elementos
 		return $query->result();
 	}
+
+	/*
+		Recupera uma editora
+	*/
+	public function get_editora($id_editora){
+		// Query de busca
+		$query = $this->db->query("SELECT * FROM `editoras` WHERE `id_editora` = $id_editora");
+		
+		// Retora os elementos
+		return $query->first_row();
+	}
 }

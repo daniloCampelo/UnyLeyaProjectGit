@@ -11,24 +11,28 @@ class M_Livros extends CI_Model {
 	}
 
 	/*
-		Insere um livro no banco de dados
-	*/
-	public function insert_livro(){
-		
-	}
-
-	/*
 		Cria um livro no banco de dados	
 	*/
-	public function create_livro(){
-		
+	public function create_livro($array){
+		$this->db->insert('livros',$array);
+		$this->db->insert_id();
+	}
+
+
+	/*
+		Atualiza as informações de um livro
+	*/
+	public function update_livro($id_livro, $array){
+		$this->db->where('id_livro',$id_livro); // Especifica o dado a ser atualizado
+        $this->db->update('livros',$array); 	// Efetua a atualizacao
 	}
 
 	/*
 		Deleta um livro no banco de dados
 	*/
-	public function delete_livro(){
-		
+	public function delete_livro($id_livro){
+		$query = "UPDATE `livros` SET `ativo`= 0 WHERE `id_livro` = $id_livro"; // Especificação do comando
+		$this->db->query($query); // Execução do comando
 	}
 
 	/*

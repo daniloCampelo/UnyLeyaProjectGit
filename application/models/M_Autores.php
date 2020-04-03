@@ -46,5 +46,16 @@ class M_Autores extends CI_Model {
 		return $query->result();
 	}
 
+	/*
+		Recupera um autor do banco de dados
+	*/
+	public function get_autor($id_autor){
+		// Query de busca
+		$query = $this->db->query("SELECT * FROM `autores` WHERE `id_autor` = $id_autor");
+		
+		// Retora os elementos
+		return $query->first_row();
+	}
+
 
 }

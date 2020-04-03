@@ -14,9 +14,9 @@ class CreateLivro extends React.Component{
       generos: [],
 
       nome: '',
-      editora: '',
-      autor: '',
-      genero: '',
+      id_editora: '',
+      id_autor: '',
+      id_genero_literario: '',
       ano_de_lancamento:'',
     };
 
@@ -34,7 +34,7 @@ class CreateLivro extends React.Component{
     /*
       Busca todos os editoras
     */
-    apiUrl = 'http://localhost/UnyLeyaProject/index.php/C_Editoras/GetEditoras';
+    apiUrl = 'http://localhost/UnyLeyaProjectGit/index.php/C_Editoras/GetEditoras';
     fetch(apiUrl) // Carrega de forma assincrona o conteúdo da URL
       .then(res => res.json()) // Rotorna os dados requeridos da forma .json()
       .then( // Chama-se essa fução quando a funcao anterior estiver encerrada.
@@ -48,7 +48,7 @@ class CreateLivro extends React.Component{
     /*
       Busca todos os autores
     */
-   apiUrl = 'http://localhost/UnyLeyaProject/index.php/C_Autores/GetAutores';
+   apiUrl = 'http://localhost/UnyLeyaProjectGit/index.php/C_Autores/GetAutores';
    fetch(apiUrl) // Carrega de forma assincrona o conteúdo da URL
      .then(res => res.json()) // Rotorna os dados requeridos da forma .json()
      .then( // Chama-se essa fução quando a funcao anterior estiver encerrada.
@@ -61,7 +61,7 @@ class CreateLivro extends React.Component{
     /*
       Busca todos os generos
     */
-   apiUrl = 'http://localhost/UnyLeyaProject/index.php/C_Generos/GetGenerosLiterarios';
+   apiUrl = 'http://localhost/UnyLeyaProjectGit/index.php/C_Generos/GetGenerosLiterarios';
    fetch(apiUrl) // Carrega de forma assincrona o conteúdo da URL
      .then(res => res.json()) // Rotorna os dados requeridos da forma .json()
      .then( // Chama-se essa fução quando a funcao anterior estiver encerrada.
@@ -89,14 +89,14 @@ class CreateLivro extends React.Component{
   */
   handleSubmit() {
     // Configura o link a redirecionar
-    let apiUrl = 'localhost/UnyLeyaProject/index.php/C_Livros/InsertLivro';
+    let apiUrl = 'http://localhost/UnyLeyaProjectGit/index.php/C_Livros/InsertLivros';
 
     // Seta as variáveis para a submissão
     let data = {
         nome: this.state.nome,
-        editora: this.state.editora,
-        autor: this.state.autor,
-        genero: this.state.genero,
+        id_editora: this.state.id_editora,
+        id_autor: this.state.id_autor,
+        id_genero_literario: this.state.id_genero_literario,
         ano_de_lancamento: this.state.ano_de_lancamento,
     }
     
@@ -145,7 +145,7 @@ class CreateLivro extends React.Component{
 
 
       <Form.Label>Editora</Form.Label>            
-      <Form.Control name="editora" as="select"  onChange={this.handleChange}>
+      <Form.Control name="id_editora" as="select"  onChange={this.handleChange}>
           <option value=""></option>
           {editoras.map(editoras => (
              <option value={editoras.id_editora}>{editoras.nome}</option>              
@@ -153,7 +153,7 @@ class CreateLivro extends React.Component{
       </Form.Control>
 
       <Form.Label>Autor</Form.Label>            
-      <Form.Control name="autor" as="select"  onChange={this.handleChange}>
+      <Form.Control name="id_autor" as="select"  onChange={this.handleChange}>
           <option value=""></option>
           {autores.map(autores => (
              <option value={autores.id_autor}>{autores.nome}</option>              
@@ -161,7 +161,7 @@ class CreateLivro extends React.Component{
       </Form.Control>
 
       <Form.Label>Genero</Form.Label>            
-      <Form.Control name="genero" as="select"  onChange={this.handleChange}>
+      <Form.Control name="id_genero_literario" as="select"  onChange={this.handleChange}>
           <option value=""></option>
           {generos.map(generos => (
              <option value={generos.id_genero_literario}>{generos.nome}</option>              

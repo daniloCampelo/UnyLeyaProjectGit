@@ -44,4 +44,16 @@ class M_Generos extends CI_Model {
 		// Retora os elementos
 		return $query->result();
 	}
+
+	/*
+		Recupera um genero
+	*/
+	public function get_genero($id_genero_literario){
+		// Query de busca
+		$query = $this->db->query("SELECT * FROM `generos_leterarios` WHERE `id_genero_literario` = $id_genero_literario");
+		
+		// Retora os elementos
+		return $query->first_row();
+	}
+
 }

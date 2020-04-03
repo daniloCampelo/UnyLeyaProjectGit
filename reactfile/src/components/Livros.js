@@ -17,6 +17,7 @@ class Livros extends React.Component{
     this.deleteLivro = this.deleteLivro.bind(this);
   }
 
+
   /*
     Redireciona o usuário para a página de edicao
   */
@@ -29,7 +30,7 @@ class Livros extends React.Component{
   */
   deleteLivro(id_livro) {
     // Configura as variasveis
-    const apiUrl = 'http://localhost/UnyLeyaProject/index.php/C_Livros/DeleteLivros'; // URL para renderizar a função para o Controller.
+    const apiUrl = 'http://localhost/UnyLeyaProjectGit/index.php/C_Livros/DeleteLivros'; // URL para renderizar a função para o Controller.
     
     const myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
@@ -69,17 +70,20 @@ class Livros extends React.Component{
     Caso não haja resultados, o estado do erro é setado como verdadeiro.
   */
   componentDidMount() { 
-  const apiUrl = 'http://localhost/UnyLeyaProject/index.php/C_Livros/GetLivros';
+    // Obtendo os Livros
+    let apiUrl = 'http://localhost/UnyLeyaProjectGit/index.php/C_Livros/GetLivros';
 
-  fetch(apiUrl) // Carrega de forma assincrona o conteúdo da URL
-    .then(res => res.json()) // Rotorna os dados requeridos da forma .json()
-    .then( // Chama-se essa fução quando a funcao anterior estiver encerrada.
-      (result) => {
-        this.setState({ // Seta o estado de aluno com o resultado obtido através desta.
-          livros: result // O resultado da busca é armazenada na variável aluno.
-        }); 
-      }
-    )
+    fetch(apiUrl) // Carrega de forma assincrona o conteúdo da URL
+      .then(res => res.json()) // Rotorna os dados requeridos da forma .json()
+      .then( // Chama-se essa fução quando a funcao anterior estiver encerrada.
+        (result) => {
+          this.setState({ // Seta o estado de aluno com o resultado obtido através desta.
+            livros: result // O resultado da busca é armazenada na variável aluno.
+          }); 
+        }
+      )
+
+    
   }
 
 
@@ -104,6 +108,10 @@ class Livros extends React.Component{
                 <th>Id_Autor</th>
                 <th>Id_Editora</th>
                 <th>Id_Genero</th>
+                <th>Nome do Autor</th>
+                <th>Nome do Genero</th>
+                <th>Nome da Editora</th>
+                
               </tr>
             </thead>
             <tbody>
@@ -120,8 +128,12 @@ class Livros extends React.Component{
                   <td>{livros.ativo}</td>
                   <td>{livros.id_autor}</td>
                   <td>{livros.id_editora}</td>
-                  <td>{livros.id_genero}</td>
+                  <td>{livros.id_genero_literario}</td>
+                  <td>{livros.autor.nome}</td>
+                  <td>{livros.genero.nome}</td>
+                  <td>{livros.editora.nome}</td>
 
+                  
                   <td>
                     <Button onClick={()=>this.editLivro(livros)}>Edit</Button>
                     &nbsp;

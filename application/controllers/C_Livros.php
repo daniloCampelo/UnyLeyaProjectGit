@@ -35,6 +35,17 @@ class C_Livros extends CI_Controller {
 		// Carrega os livros da base de dados
 		$livros = $this->M_Livros->retrieve_livro();
 
+		// $livros[0]->id_livro; //Acesso o id do primeiro livro
+
+		foreach ($livros as $linha) {
+			$linha->teste = "testando a atribuicao de valores";
+			$linha->autor = $this->M_Autores->get_autor($linha->id_autor);// Getting in BD
+			$linha->editora = $this->M_Editoras->get_editora($linha->id_editora);// Getting in BD
+			$linha->genero = $this->M_Generos->get_genero($linha->id_genero_literario);// Getting in BD
+ 		}
+
+
+	
 		// Envia os livros para a view
 		$this->output
 		->set_content_type('application/json')
@@ -46,7 +57,21 @@ class C_Livros extends CI_Controller {
 	*/
 	public function InsertLivros()
 	{
-		// Code
+		// Configura a variável que receberá dados do usuário
+		$formdata = json_decode(file_get_contents('php://input'), true);
+
+		// Obtendo os dados do usuário
+		$array = array(
+			'nome' => $formdata['nome'],
+			'ativo' => 1,
+			'ano_de_lancamento' => $formdata['ano_de_lancamento'],
+			'id_autor' => $formdata['id_autor'],
+			'id_editora' => $formdata['id_editora'],
+			'id_genero_literario' => $formdata['id_genero_literario'],
+		);
+
+		// Chama a funcao do Model para inserir os dados no Banco de Dados.
+		$this->M_Livros->create_livro($array);
 	}
 
 	/*
@@ -54,7 +79,22 @@ class C_Livros extends CI_Controller {
 	*/
 	public function UpDateLivros()
 	{
-		// Code
+		// Configura a variável que receberá dados do usuário
+		$formdata = json_decode(file_get_contents('php://input'), true);
+
+		$id_livro = $formdata['id_livro'];
+
+		// Obtendo os dados do usuário
+		$array = array(
+			'nome' => $formdata['nome'],
+			'ano_de_lancamento' => $formdata['ano_de_lancamento'],
+			'id_autor' => $formdata['id_autor'],
+			'id_editora' => $formdata['id_editora'],
+			'id_genero_literario' => $formdata['id_genero_literario'],
+		);
+
+		// Chama a funcao do Model para inserir os dados no Banco de Dados.
+		$this->M_Livros->update_livro($id_livro,$array);
 	}
 
 	/*
@@ -62,7 +102,14 @@ class C_Livros extends CI_Controller {
 	*/
 	public function DeleteLivros()
 	{
-		// Code
+		// Configura a variável que receberá dados do usuário
+		$formdata = json_decode(file_get_contents('php://input'), true);
+
+		// Obtendo os dados do usuário, vindos do react 
+		$id_livro = $formdata['id_livro'];
+
+		// Chama a funcao do Model para deletar
+		$this->M_Livros->delete_livro($id_livro);
 	}
 
 }
