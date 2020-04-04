@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Menu from './components/Menu';
+import App from './App';
 
 //Navegação do Menu Principal
 import Home from './components/Home';

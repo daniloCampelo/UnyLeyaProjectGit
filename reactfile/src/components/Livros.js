@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table, Button, Alert } from 'react-bootstrap';
+import './Head.css';
 
 
 class Livros extends React.Component{
@@ -92,22 +93,13 @@ class Livros extends React.Component{
     const {livros} = this.state;
 
     return(
-      <div>
+      <div >
         <h1>Livros</h1>
-
-        <Button onClick={()=>this.createLivro()}>Criar</Button>
-      
-
-        <Table>
+        <Table className="Table">
             <thead>
-              <tr>
-                <th>ID</th>
+              <tr className="Th">
                 <th>Nome</th>
                 <th>Ano de Lançamento</th>
-                <th>Ativo</th>
-                <th>Id_Autor</th>
-                <th>Id_Editora</th>
-                <th>Id_Genero</th>
                 <th>Nome do Autor</th>
                 <th>Nome do Genero</th>
                 <th>Nome da Editora</th>
@@ -120,29 +112,28 @@ class Livros extends React.Component{
               Recupera todos os resultados vindo do Controller que foram armazenados na variável alunos
             */}
             {livros.map(livros => (
-                <tr key={livros.id_livro}> {/* Especifica o identificador do registro */}
+                <tr key={livros.id_livro} className="Tr"> {/* Especifica o identificador do registro */}
 
-                  <td>{livros.id_livro}</td>
                   <td>{livros.nome}</td>
                   <td>{livros.ano_de_lancamento}</td>
-                  <td>{livros.ativo}</td>
-                  <td>{livros.id_autor}</td>
-                  <td>{livros.id_editora}</td>
-                  <td>{livros.id_genero_literario}</td>
                   <td>{livros.autor.nome}</td>
                   <td>{livros.genero.nome}</td>
                   <td>{livros.editora.nome}</td>
 
                   
                   <td>
-                    <Button onClick={()=>this.editLivro(livros)}>Edit</Button>
+                    <Button onClick={()=>this.editLivro(livros)} className="ButtonEdit">Edit</Button>
                     &nbsp;
-                    <Button onClick={()=>this.deleteLivro(livros.id_livro)}> Delete</Button>
+                    <Button onClick={()=>this.deleteLivro(livros.id_livro)} className="ButtonDelete"> Delete</Button>
                   </td>
                 </tr>
               ))}
+            <br/>
+            <Button onClick={()=>this.createLivro()} className="Button">Criar</Button>
             </tbody>
           </Table>
+          
+          
       </div>
     )
   }

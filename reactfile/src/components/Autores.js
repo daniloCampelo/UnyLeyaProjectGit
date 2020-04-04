@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table, Button, Alert } from 'react-bootstrap';
+import './Head.css';
 
 class Autores extends React.Component{
   /*
@@ -85,19 +86,15 @@ class Autores extends React.Component{
     return(
       <div>
         <h1>Autores</h1>
-
-        <Button onClick={()=>this.createAutores()}>Criar Autor</Button>
         
-        <Table>
+        <Table className="Table">
             <thead>
-              <tr>
-                <th>ID</th>
+              <tr className="Th">
                 <th>Nome</th>
                 <th>Sexo</th>
                 <th>Data de Nascimento</th>
                 <th>Nacionalidade</th>
-                <th>Ativo</th>
-
+                
               </tr>
             </thead>
             <tbody>
@@ -106,25 +103,25 @@ class Autores extends React.Component{
               Recupera todos os resultados vindo do Controller que foram armazenados na variável alunos
             */}
             {autores.map(autores => (
-                <tr key={autores.id_autor}> {/* Especifica o identificador do registro */}
+                <tr key={autores.id_autor} className="Tr"> {/* Especifica o identificador do registro */}
                 
-                  <td>{autores.id_autor}</td>
                   <td>{autores.nome}</td>
                   <td>{autores.sexo}</td>
                   <td>{autores.data_de_nascimento}</td>
                   <td>{autores.nacionalidade}</td>
-                  <td>{autores.ativo}</td>
                   
                   <td>
-                    <Button onClick={()=>this.editAutor(autores)}>Edit</Button>
+                    <Button className="ButtonEdit" onClick={()=>this.editAutor(autores)}>Edit</Button>
                     &nbsp;
-                    <Button onClick={()=>this.deleteAutor(autores.id_autor)}> Delete</Button>
+                    <Button className="ButtonDelete" onClick={()=>this.deleteAutor(autores.id_autor)}> Delete</Button>
                   </td>
                 </tr>
               ))}
             </tbody>
+            <br/>    
+          <Button className="Button" onClick={()=>this.createAutores()}>Criar Autor</Button>
           </Table>
-
+          
 
       </div>
     )

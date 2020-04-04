@@ -5,8 +5,8 @@ class Home extends React.Component{
 
     return(
       <div>
-        <h1>Olá</h1>
-          Olá, você está na pagina de edição de Livros. 
+        <h1>Página Inicial</h1>
+          Sistema de CRUD utilizando CodeIgniter e Node.Js. 
       </div>
     )
   }

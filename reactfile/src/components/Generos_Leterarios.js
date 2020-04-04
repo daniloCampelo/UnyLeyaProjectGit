@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table, Button, Alert } from 'react-bootstrap';
+import './Head.css';
 
 class Generos_Literarios extends React.Component{
   
@@ -85,14 +86,10 @@ class Generos_Literarios extends React.Component{
       <div>
         <h1>Generos Literarios</h1>
 
-        <Button onClick={()=>this.createGeneroLeterario()}> Criar Genero</Button>
-
         <Table>
           <thead>
-            <tr>
-              <th>ID</th>
+            <tr className="Th">
               <th>Nome</th>
-              <th>Ativo</th>
             </tr>
           </thead>
           <tbody>
@@ -101,21 +98,21 @@ class Generos_Literarios extends React.Component{
             Recupera todos os resultados vindo do Controller que foram armazenados na variável alunos
           */}
           {generos_literarios.map(generos_literarios => (
-              <tr key={generos_literarios.id_genero_literario}> {/* Especifica o identificador do registro */}
+              <tr className="Tr" key={generos_literarios.id_genero_literario}> {/* Especifica o identificador do registro */}
               
-                <td>{generos_literarios.id_genero_literario}</td>
                 <td>{generos_literarios.nome}</td>
-                <td>{generos_literarios.ativo}</td>
 
                 <td>
-                  <Button onClick={()=>this.editGenero(generos_literarios)}>Edit</Button>
+                  <Button className="ButtonEdit" onClick={()=>this.editGenero(generos_literarios)}>Edit</Button>
                   &nbsp;
-                  <Button onClick={()=>this.deleteGenero(generos_literarios.id_genero_literario)}> Delete</Button>
+                  <Button className="ButtonDelete" onClick={()=>this.deleteGenero(generos_literarios.id_genero_literario)}> Delete</Button>
                 </td>
               </tr>
             ))}
           </tbody>
-        </Table>
+          <br/>
+          <Button className="Button" onClick={()=>this.createGeneroLeterario()}> Criar Genero</Button>
+          </Table>
 
       </div>
 
