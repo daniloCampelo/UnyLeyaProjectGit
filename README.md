@@ -6,7 +6,9 @@ Este documento será para demostrar, passo a passo, como fazer a instalação do
 Foi usado os seguintes programas para o desenvolvimento. Recomenda-se usar os mesmos programas citados aqui para que as configurações feitas neste projeto passem a funcionar quem qualquer computador. São eles:
 
 WampServer - Para a instalação do servidor local. 
+
 CodeIgniter - Responsável pelo controle e conversas entre componentes.
+
 Node.Js - Usado para a criação das telas. 
 
 ## Instalando os Programas
